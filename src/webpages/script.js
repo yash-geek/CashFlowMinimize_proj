@@ -194,13 +194,9 @@ function minCashFlowRec(maxH, minH, result) {
 
     let ans = [];
     ans.push(`Person ${mxDebit.second + 1} pays ${min} to Person ${mxCredit.second + 1}`);
-    //console.log(`Person ${mxDebit.second + 1} pays ${min} to Person ${mxCredit.second + 1}`)
     result.push(ans);
-    //console.log(ans);
-
     maxH.insert(mxCredit);
     minH.insert(mxDebit);
-
     minCashFlowRec(maxH, minH, result);
 }
 
@@ -210,13 +206,13 @@ export function minCashFlow(graph) {
     let MinH = new MinHeap();
     let result = []; // Declare result here
     //console.log(graph);
-    const arr = []
+    //const arr = []
     for (let i = 0; i < len; i++) {
         let sum = 0;
         for (let j = 0; j < len; j++) {
             sum += (graph[j][i] - graph[i][j]);
         }
-        arr.push(new Pair(sum,i));
+        //arr.push(new Pair(sum,i));
         MaxH.insert(new Pair(sum, i));
         MinH.insert(new Pair(sum, i));
     }
@@ -224,6 +220,7 @@ export function minCashFlow(graph) {
     //console.log(arr)
     minCashFlowRec(MaxH, MinH, result);
     //console.log(result);
+
     return result;
 }
 export default minCashFlow;

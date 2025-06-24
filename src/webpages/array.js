@@ -59,7 +59,7 @@ const buttonStyle = {
   }
 };
 
-export default function DataTabelVariable() {
+export default function DataTableVariable() {
   // Table
   const classes = useStyles();
   const [rowValue, setRowValue] = useState(0);
@@ -73,50 +73,6 @@ export default function DataTabelVariable() {
   const getUniqueKeyFromArrayIndex = (rowNum, columnNum) => {
     return `${rowNum}-${columnNum}`;
   };
-
-  //   useEffect(() => {
-  //     // console.log(tableArrayData);
-  //     getDataDictionary(tableArrayData);
-  //   }, [tableCellsData]);
-
-  //   const getDataDictionary = (data) => {
-  //     const headers = data[0];
-  //     let dictionary = [];
-
-  //     for (let i = 0; i < data.length; i++) {
-  //       let object = {};
-  //       for (let j = 0; j < data[i].length; j++) {
-  //           if (i == j)
-  //             data[i][j] = 0;
-  //         object[headers[j]] = data[i][j];
-  //       }
-  //       dictionary.push(object);
-  //     }
-
-  // console.log(dictionary);
-  //     return dictionary;
-  //   };
-
-  // const onChangeHandler = (e) => {
-  //   let [row, col] = e.target.name.split("-");
-  //   if (row === col) {
-  //       e.target.value = 0;
-  //   }
-  //   console.log(e.target.name, e.target.value);
-  //   setTableCellsData({
-  //     ...tableCellsData,
-  //     [e.target.name]: e.target.value
-  //   });
-  //   setShowResult(false);
-  //   row = parseInt(row);
-  //   col = parseInt(col);
-
-  //   if (!tableArrayData[row]) {
-  //     tableArrayData[row] = [];
-  //   }
-  //   // console.log(row, col);
-  //   tableArrayData[row][col] = e.target.value;
-  // };
   const [errorMessage, setErrorMessage] = useState('');
 
   const onChangeHandler = (e) => {
@@ -165,8 +121,28 @@ export default function DataTabelVariable() {
 
   const generateTable = () => {
     let table = [];
-
-
+    // let head = []
+    // for(let i = 0; i < columnsValue; i++)
+    // head.push(
+    //   <td>
+    //     <strong style={{borderRadius: 4,
+    // position: "relative",
+    // border: "1px solid #ced4da",
+    // fontSize: 16,
+    // width: "60%",
+    // padding: "5px 6px"
+    // }}>To Person {i+1}</strong>
+    //   </td>
+    // );
+    // table.push(
+    //   <TableHead style={{ backgroundColor: "#e68a29" }}>
+    //     <TableRow >
+    //       <div style={{ paddingTop: 20, paddingLeft: 5, color: "#000000" }}></div>
+    //       <TableCell>{head}</TableCell>
+    //     </TableRow>
+    //   </TableHead> 
+    
+    // );
     for (let i = 0; i < rowValue; i++) {
       let children = [];
       for (let j = 0; j < columnsValue; j++) {
@@ -195,7 +171,8 @@ export default function DataTabelVariable() {
             <div style={{ paddingTop: 20, paddingLeft: 5, color: "#000000" }}>Person {i + 1} has to pay</div>
             <TableCell>{children}</TableCell>
           </TableRow>
-        </TableHead>
+        </TableHead> 
+      
       );
       //   console.log(tableCellsData);
     }
